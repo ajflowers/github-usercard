@@ -162,7 +162,10 @@ function getCard(username) {
     console.log(err);
   })
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/angela-flowers
 
 // getCard('ajflowers');
 
@@ -173,6 +176,7 @@ function getCard(username) {
 // })
 
 
+<<<<<<< HEAD
 axios.get('https://api.github.com/users/ajflowers')
   .then((response) => {
     let newCard = makeCard(response.data);
@@ -192,3 +196,9 @@ axios.get('https://api.github.com/users/ajflowers')
   .catch((err) => {
     console.log(err);
   })
+=======
+followersArray.forEach(follower => {
+  getCard(follower);
+})
+
+>>>>>>> refs/remotes/origin/angela-flowers
