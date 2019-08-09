@@ -171,3 +171,4 @@ getCard('ajflowers');
 followersArray.forEach(follower => {
   getCard(follower);
 })
+
