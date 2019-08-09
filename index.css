@@ -137,6 +137,7 @@ body {
 
 span {
   color: #666666;
+  cursor: pointer;
 }
 
 .subheader {

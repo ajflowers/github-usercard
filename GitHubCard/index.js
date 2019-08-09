@@ -32,6 +32,8 @@ const followersArray = [
   'bigknell'
 ];
 
+
+
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -222,6 +224,7 @@ function getCard(username) {
 
 getCard('ajflowers');
 
+
 // const testCard = makeCard('ajflowers');
 // console.log(testCard);
 
@@ -262,16 +265,6 @@ getCard('ajflowers');
 // mixing collapsible cards w/ retrieval of followers/following data
 
 // starting with coded list of users
-const namesArray = [
-  'ajflowers',
-  'MWeberLambdaWeb19',
-  'tetondan',
-  'dustinmyers',
-  'justsml',
-  'luishrd',
-  'bigknell'
-];
-
 
 
 // function to add user cards within existing user cards
@@ -365,3 +358,9 @@ function getChildCards(login, name, type) {
 namesArray.forEach(name => {
   getCard(name);
 })
+
+
+/* -----NOTES-----
+add search box and button to top div
+change spans to buttons
+*/
