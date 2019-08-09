@@ -162,10 +162,6 @@ function getCard(username) {
     console.log(err);
   })
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/angela-flowers
 
 // getCard('ajflowers');
 
@@ -176,29 +172,25 @@ function getCard(username) {
 // })
 
 
-<<<<<<< HEAD
-axios.get('https://api.github.com/users/ajflowers')
+
+function meAndTheSquad (name) {
+const nameList = [name];
+axios.get(`https://api.github.com/users/${name}/followers`)
   .then((response) => {
-    let newCard = makeCard(response.data);
-    cards.appendChild(newCard);
-    console.log(response.data.followers_url);
-    axios.get(response.data.followers_url)
-      .then((response) => {
-        response.data.forEach(follower => {
-          let newCard = getCard(follower);
-          cards.appendChild(newCard);
-        })
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    response.data.forEach(follower => {
+      nameList.push(follower.login);
+    })
+    console.log(nameList);
   })
+  .then(() => {
+    nameList.forEach(person => {
+      getCard(person);
+    })
+  })
+
+
   .catch((err) => {
     console.log(err);
   })
-=======
-followersArray.forEach(follower => {
-  getCard(follower);
-})
-
->>>>>>> refs/remotes/origin/angela-flowers
+}
+meAndTheSquad('ajflowers');
