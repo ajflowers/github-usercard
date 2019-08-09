@@ -63,7 +63,7 @@ const followersArray = [
 
 axios.get('https://api.github.com/users/ajflowers')
   .then((response) => {
-    console.log(response);
+    //console.log(response);
     console.log(response.data);
     // console.log(testObj);
   })
@@ -164,10 +164,31 @@ function getCard(username) {
 }
 
 
-getCard('ajflowers');
+// getCard('ajflowers');
 
-//console.log(followersArray);
+// //console.log(followersArray);
 
-followersArray.forEach(follower => {
-  getCard(follower);
-})
+// followersArray.forEach(follower => {
+//   getCard(follower);
+// })
+
+
+axios.get('https://api.github.com/users/ajflowers')
+  .then((response) => {
+    let newCard = makeCard(response.data);
+    cards.appendChild(newCard);
+    console.log(response.data.followers_url);
+    axios.get(response.data.followers_url)
+      .then((response) => {
+        response.data.forEach(follower => {
+          let newCard = getCard(follower);
+          cards.appendChild(newCard);
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
