@@ -53,3 +53,81 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+
+axios.get('https://api.github.com/users/ajflowers')
+  .then((response) => {
+    console.log(response);
+    console.log(response.data);
+    // console.log(testObj);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+
+
+const cards = document.querySelector('.cards');
+// console.log(cards);
+
+const makeCard = function (user) {
+
+  //elements
+
+  //card - outer div to return
+  const card = document.createElement('div');
+  card.className = "card";
+
+  //image
+  const cardImg = document.createElement('img');
+  cardImg.setAttribute('src', user.avatar_url);
+  cardImg.setAttribute('alt', `${user.name}'s GitHub profile picture`);
+  
+  card.appendChild(cardImg);
+
+  //info div
+  const cardInfo = document.createElement('div');
+  cardInfo.className = 'card-name';
+
+  card.appendChild(cardInfo);
+
+  //name
+  const cardName = document.createElement('h3');
+  cardName.className = 'name';
+  cardName.append(user.name);
+
+  cardInfo.appendChild(cardName);
+  
+  //login
+  const cardLogin = document.createElement('p');
+  cardLogin.className = 'username';
+  cardLogin.append(user.login);
+  
+  cardInfo.appendChild(cardLogin);
+  
+
+
+
+  //location
+  const cardLocation = document.createElement('p');
+  cardLocation.append(`Location: $`)
+
+
+  return card;
+
+}
+
+function getcard(username) {
+  axios.get(`https://api.github.com/users/${username}`)
+  .then((response) => {
+    let newCard = makeCard(response.data);
+    cards.appendChild(newCard);
+
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+}
+
+getcard("ajflowers");
